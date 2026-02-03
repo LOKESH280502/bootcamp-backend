@@ -1,5 +1,9 @@
 package org.tech.bootcampp.dao;
  
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -26,8 +30,9 @@ public class Bootcamp {
      * Example: "react development,java development"
      */
     private String careers;
-
+    @Column(columnDefinition = "TEXT")
     private String photo;
+
 
     private Boolean housing;
 
@@ -36,10 +41,24 @@ public class Bootcamp {
     private Boolean jobGuarantee;
 
     private Boolean acceptGi;
+    
+    @OneToMany(mappedBy = "bootcamp", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<Course> courses;
+
+
 
     // -------------------- getters & setters --------------------
 
-    public Long getId() {
+    public List<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
+	}
+
+	public Long getId() {
         return id;
     }
 

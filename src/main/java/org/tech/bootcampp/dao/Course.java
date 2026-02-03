@@ -2,6 +2,8 @@ package org.tech.bootcampp.dao;
 
  
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -24,12 +26,15 @@ public class Course {
     private String minimumSkill;
 
     private boolean scholarshipAvailable;
+    @Column(columnDefinition = "TEXT")
 
     private String image;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "bootcamp_id", nullable = false)
+    @JsonBackReference
     private Bootcamp bootcamp;
+
 
     // ---------- Constructors ----------
     public Course() {}
