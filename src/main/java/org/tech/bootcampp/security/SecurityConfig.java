@@ -53,7 +53,7 @@ public class SecurityConfig {
             	    .requestMatchers(HttpMethod.POST, "/api/v1/bootcamps/**").hasRole("PUBLISHER")
             	    .requestMatchers(HttpMethod.PUT, "/api/v1/bootcamps/**").hasRole("PUBLISHER")
             	    .requestMatchers(HttpMethod.DELETE, "/api/v1/bootcamps/**").hasRole("PUBLISHER")
-
+            	    .requestMatchers("/enrollment/**").authenticated()
             	    .anyRequest().authenticated()
             	)
 
