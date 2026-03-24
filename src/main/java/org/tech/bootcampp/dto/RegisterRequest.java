@@ -7,8 +7,18 @@ public class RegisterRequest {
     public String email;
     public String password;
     public String role;
+    public String avatar;
+    private String publisherCode;
+ // getter and setter
+ public String getPublisherCode() { return publisherCode; }
+ public void setPublisherCode(String publisherCode) { this.publisherCode = publisherCode; }
     
-    
+	public String getAvatar() {
+		return avatar;
+	}
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
 	public String getRole() {
 		return role;
 	}
@@ -33,6 +43,6 @@ public class RegisterRequest {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-    
+	 
     
 }

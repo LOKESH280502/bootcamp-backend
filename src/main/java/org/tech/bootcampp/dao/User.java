@@ -14,8 +14,10 @@ public class User {
     private String password;   // plain text
 
     private String role; 
-    
-    private String avatar;// USER / ADMIN
+  
+ 
+
+	private String avatar;// USER / ADMIN
 
 	public String getName() {
 		return name;
