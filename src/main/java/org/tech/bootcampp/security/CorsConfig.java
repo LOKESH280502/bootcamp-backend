@@ -11,34 +11,49 @@ import java.util.List;
 @Configuration
 public class CorsConfig {
 
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
+//    @Bean
+//    public CorsConfigurationSource corsConfigurationSource() {
+//
+//        CorsConfiguration config = new CorsConfiguration();
+ 
+//        config.setAllowedOrigins(List.of("http://localhost:5173"));
+ 
+//        config.setAllowedMethods(List.of(
+//                "GET", "POST", "PUT", "DELETE", "OPTIONS"
+//        ));
+ 
+//        config.setAllowedHeaders(List.of(
+//                "Authorization", "Content-Type"
+//        ));
+ 
+////        config.setExposedHeaders(List.of("Authorization"));
+//
+//        config.setAllowCredentials(true);
+//
+//        UrlBasedCorsConfigurationSource source =
+//                new UrlBasedCorsConfigurationSource();
+//
+//        source.registerCorsConfiguration("/**", config);
+//
+//        return source;
+//    }
+	@Bean
+	public CorsConfigurationSource corsConfigurationSource() {
+	    CorsConfiguration config = new CorsConfiguration();
+	    config.setAllowedOrigins(List.of(
+	        "http://localhost:5173",
+	        "http://localhost:5174",
+	        "https://your-app.vercel.app"  // ← add after you get Vercel URL
+	    ));
+	    config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+	    config.setAllowedHeaders(List.of(
+              "Authorization", "Content-Type"
+      ));
+//	    config.setAllowedHeaders(List.of("*"));
+	    config.setAllowCredentials(true);
 
-        CorsConfiguration config = new CorsConfiguration();
-
-        // ✅ Frontend origin
-        config.setAllowedOrigins(List.of("http://localhost:5173"));
-
-        // ✅ HTTP methods
-        config.setAllowedMethods(List.of(
-                "GET", "POST", "PUT", "DELETE", "OPTIONS"
-        ));
-
-        // ✅ Headers
-        config.setAllowedHeaders(List.of(
-                "Authorization", "Content-Type"
-        ));
-
-        // ✅ Allow JWT header
-//        config.setExposedHeaders(List.of("Authorization"));
-
-        config.setAllowCredentials(true);
-
-        UrlBasedCorsConfigurationSource source =
-                new UrlBasedCorsConfigurationSource();
-
-        source.registerCorsConfiguration("/**", config);
-
-        return source;
-    }
+	    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	    source.registerCorsConfiguration("/**", config);
+	    return source;
+	}
 }
