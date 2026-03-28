@@ -43,7 +43,7 @@ public class CorsConfig {
 	    config.setAllowedOrigins(List.of(
 	        "http://localhost:5173",
 	        "http://localhost:5174",
-	        "https://your-app.vercel.app"  // ← add after you get Vercel URL
+	        "https://bootcamp-frontend-rho.vercel.app/"  // ← add after you get Vercel URL
 	    ));
 	    config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 	    config.setAllowedHeaders(List.of(
